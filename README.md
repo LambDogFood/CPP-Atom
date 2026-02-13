@@ -15,11 +15,11 @@ auto count = createAtom<int>(0, [](const std::exception_ptr e) {
   catch (const std::exception& ex) {
     std::cerr << ex.what() << std::endl;
   }
-};
+});
 
 auto sub = count->subscribe([](const int& value) {
   std::cout << "changed: " << value << std::endl;
-};
+});
 
 count->get(); // Read
 count->set(5); // Write
@@ -29,4 +29,5 @@ sub.unsubscribe(); // Manual cleanup (or let RAII handle it)
 
 ## License
 MIT
+
 
